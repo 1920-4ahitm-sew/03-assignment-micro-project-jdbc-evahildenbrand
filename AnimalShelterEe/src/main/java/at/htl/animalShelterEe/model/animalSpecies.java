@@ -1,4 +1,4 @@
-package at.htl.animalShelterEe.entity;
+package at.htl.animalShelterEe.model;
 
 public class animalSpecies {
     private String breed;
