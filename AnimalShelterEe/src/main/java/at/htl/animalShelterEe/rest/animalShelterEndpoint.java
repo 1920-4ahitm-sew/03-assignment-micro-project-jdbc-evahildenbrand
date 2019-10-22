@@ -34,4 +34,9 @@ public class animalShelterEndpoint {
         System.out.println("deleted" + id);
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void save(animalSpecies vehicle){
+        System.out.println("Vehicle = " + vehicle);
+    }
 }
