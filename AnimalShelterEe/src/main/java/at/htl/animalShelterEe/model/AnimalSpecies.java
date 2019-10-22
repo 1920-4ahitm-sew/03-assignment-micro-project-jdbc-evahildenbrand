@@ -1,5 +1,8 @@
 package at.htl.animalShelterEe.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class AnimalSpecies {
     private String breed;
     private String species;
