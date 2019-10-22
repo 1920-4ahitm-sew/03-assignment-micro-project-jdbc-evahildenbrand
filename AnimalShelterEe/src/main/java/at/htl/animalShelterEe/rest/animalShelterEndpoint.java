@@ -17,6 +17,10 @@ import java.util.List;
         MediaType.APPLICATION_XML
 })
 public class animalShelterEndpoint {
-    
+    @GET
+    @Path("{id}")
+    public animalSpecies find(@PathParam("id") long id){
+        return new animalSpecies("Wildkatze" + id, "Katze", "Saeugetier");
+    }
 
 }
