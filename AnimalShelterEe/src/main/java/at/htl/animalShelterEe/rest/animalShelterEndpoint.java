@@ -23,4 +23,11 @@ public class animalShelterEndpoint {
         return new animalSpecies("Wildkatze" + id, "Katze", "Saeugetier");
     }
 
+    @GET
+    public List<animalSpecies> findAll(){
+        List<animalSpecies> all = new ArrayList<>();
+        all.add(find(42));
+        return all;
+    }
+
 }
