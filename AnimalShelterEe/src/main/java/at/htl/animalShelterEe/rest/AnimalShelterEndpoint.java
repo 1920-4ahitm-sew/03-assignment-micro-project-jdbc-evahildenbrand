@@ -1,6 +1,6 @@
 package at.htl.animalShelterEe.rest;
 
-import at.htl.animalShelterEe.model.animalSpecies;
+import at.htl.animalShelterEe.model.AnimalSpecies;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,17 +13,17 @@ import java.util.List;
         MediaType.TEXT_PLAIN,
         MediaType.APPLICATION_XML
 })
-public class animalShelterEndpoint {
+public class AnimalShelterEndpoint {
 
     @GET
     @Path("{id}")
-    public animalSpecies find(@PathParam("id") long id){
-        return new animalSpecies("Wildkatze" + id, "Katze", "Saeugetier");
+    public AnimalSpecies find(@PathParam("id") long id){
+        return new AnimalSpecies("Wildkatze" + id, "Katze", "Saeugetier");
     }
 
     @GET
-    public List<animalSpecies> findAll(){
-        List<animalSpecies> all = new ArrayList<>();
+    public List<AnimalSpecies> findAll(){
+        List<AnimalSpecies> all = new ArrayList<>();
         all.add(find(42));
         return all;
     }
@@ -36,7 +36,7 @@ public class animalShelterEndpoint {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void save(animalSpecies vehicle){
+    public void save(AnimalSpecies vehicle){
         System.out.println("Vehicle = " + vehicle);
     }
 }
