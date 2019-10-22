@@ -1,17 +1,17 @@
 package at.htl.animalShelterEe.model;
 
-public class animalSpecies {
+public class AnimalSpecies {
     private String breed;
     private String species;
     private String genus;
 
-    public animalSpecies(String breed, String species, String genus) {
+    public AnimalSpecies(String breed, String species, String genus) {
         this.breed = breed;
         this.species = species;
         this.genus = genus;
     }
 
-    public animalSpecies() {
+    public AnimalSpecies() {
     }
 
     public String getBreed() {
