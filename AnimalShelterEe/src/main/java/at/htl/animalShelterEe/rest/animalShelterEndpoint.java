@@ -2,10 +2,7 @@ package at.htl.animalShelterEe.rest;
 
 import at.htl.animalShelterEe.model.animalSpecies;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +14,7 @@ import java.util.List;
         MediaType.APPLICATION_XML
 })
 public class animalShelterEndpoint {
+
     @GET
     @Path("{id}")
     public animalSpecies find(@PathParam("id") long id){
@@ -28,6 +26,12 @@ public class animalShelterEndpoint {
         List<animalSpecies> all = new ArrayList<>();
         all.add(find(42));
         return all;
+    }
+
+    @DELETE
+    @Path("{id}")
+    public void delete(@PathParam("id") long id){
+        System.out.println("deleted" + id);
     }
 
 }
