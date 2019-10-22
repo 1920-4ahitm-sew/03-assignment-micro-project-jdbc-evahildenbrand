@@ -39,4 +39,10 @@ public class AnimalSpecies {
         this.genus = genus;
     }
     //endregion
+
+
+    @Override
+    public String toString() {
+        return String.format("%d: %s %s",breed,species,genus);
+    }
 }
