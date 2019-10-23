@@ -132,4 +132,24 @@ public class Database {
 
         closeConnection();
     }
+
+    public void updateAnimalSpecies(AnimalSpecies species){
+        openConnection();
+
+        try {
+            PreparedStatement updateSpecies = connection.prepareStatement("update ANIMALSPECIES set SPECIES=?,GENUS=? where BREED=?");
+
+            updateSpecies.setString(1,species.getSpecies());
+            updateSpecies.setString(2,species.getGenus());
+            updateSpecies.setString(3,species.getBreed());
+
+            updateSpecies.execute();
+
+            System.out.println("Animal Species with breed " + species.getBreed() + "was updated");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+    }
 }
