@@ -18,19 +18,15 @@ public class AnimalShelterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         PrintWriter printWriter = resp.getWriter();
 
-        String htmlOutput;
-
-        htmlOutput = "<html>";
-            htmlOutput += "<head>";
-                htmlOutput += "<title>Animal Species</title>";
-                htmlOutput += "<meta charset='UTF-8'>";
-            htmlOutput += "</head>";
-            htmlOutput += "<body>";
-                htmlOutput += "<h1>Animal Species</h1>";
-            htmlOutput += "</body>";
-        htmlOutput += "</html>";
-
-        printWriter.println(htmlOutput);
+        printWriter.println("<html>");
+            printWriter.println("<head>");
+                printWriter.println("<title>Animal Species</title>");
+                printWriter.println("<meta charset='UTF-8'>");
+            printWriter.println("</head>");
+            printWriter.println("<body>");
+                printWriter.println("<h1>Animal Species</h1>");
+            printWriter.println("</body>");
+        printWriter.println("</html>");
     }
 
 }
