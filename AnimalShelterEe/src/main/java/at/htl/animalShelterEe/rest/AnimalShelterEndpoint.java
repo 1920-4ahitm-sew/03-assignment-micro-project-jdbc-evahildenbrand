@@ -39,7 +39,9 @@ public class AnimalShelterEndpoint {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void save(AnimalSpecies vehicle){
-        System.out.println("Vehicle = " + vehicle);
+    public void insertAnimalSpecies(AnimalSpecies species){
+        if(species != null){
+            db.insertAnimalSpecies(species);
+        }
     }
 }
