@@ -44,4 +44,18 @@ public class AnimalShelterEndpoint {
             db.insertAnimalSpecies(species);
         }
     }
+
+    @PUT
+    @Path("{breed}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void updateAnimalSpecies(@PathParam("breed") String breed, AnimalSpecies updatedSpecies){
+        if(updatedSpecies != null){
+            AnimalSpecies species = db.selectSpecies(breed);
+
+            species.setSpecies(updatedSpecies.getSpecies());
+            species.setGenus(updatedSpecies.getGenus());
+
+            db.updateAnimalSpecies(species);
+        }
+    }
 }
