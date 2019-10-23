@@ -1,5 +1,6 @@
 package at.htl.animalShelterEe.rest;
 
+import at.htl.animalShelterEe.database.Database;
 import at.htl.animalShelterEe.model.AnimalSpecies;
 
 import javax.ws.rs.*;
@@ -15,10 +16,13 @@ import java.util.List;
 })
 public class AnimalShelterEndpoint {
 
+    static Database db = new Database();
+
     @GET
-    @Path("{id}")
-    public AnimalSpecies find(@PathParam("id") long id){
-        return new AnimalSpecies("Wildkatze" + id, "Katze", "Saeugetier");
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{breed}")
+    public AnimalSpecies findAnimalSpecies(@PathParam("breed") String breed){
+        return db.selectSpecies(breed);
     }
 
     @GET
