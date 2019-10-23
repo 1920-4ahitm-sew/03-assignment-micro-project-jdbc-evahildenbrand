@@ -20,6 +20,8 @@ public class AnimalShelterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         PrintWriter printWriter = resp.getWriter();
 
+        List<AnimalSpecies> speciesList = db.selectAllAnimalSpecies();
+
         printWriter.println("<html>");
             printWriter.println("<head>");
                 printWriter.println("<title>Animal Species</title>");
@@ -33,6 +35,13 @@ public class AnimalShelterServlet extends HttpServlet {
                         printWriter.println("<th>Species</th>");
                         printWriter.println("<th>Genus</th>");
                     printWriter.println("</tr>");
+                    for(AnimalSpecies species : speciesList){
+                        printWriter.println("<tr>");
+                            printWriter.println("<td>" + species.getBreed() + "</td>");
+                            printWriter.println("<td>" + species.getSpecies() + "</td>");
+                            printWriter.println("<td>" + species.getGenus() + "</td>");
+                        printWriter.println("</tr>");
+                    }
                 printWriter.println("</table>");
             printWriter.println("</body>");
         printWriter.println("</html>");
