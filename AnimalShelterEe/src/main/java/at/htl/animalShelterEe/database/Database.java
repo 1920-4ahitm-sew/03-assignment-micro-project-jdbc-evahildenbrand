@@ -114,4 +114,22 @@ public class Database {
 
         closeConnection();
     }
+
+    public void deleteAnimalSpecies(String breed){
+        openConnection();
+
+        try {
+            PreparedStatement deleteSpecies = connection.prepareStatement("delete from ANIMALSPECIES where BREED=?");
+
+            deleteSpecies.setString(1,breed);
+
+            deleteSpecies.execute();
+
+            System.out.println("The AnimalSpecies " + breed + " was deleted");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+    }
 }
