@@ -1,8 +1,8 @@
 package at.htl.animalShelterEe.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import at.htl.animalShelterEe.model.AnimalSpecies;
+
+import java.sql.*;
 
 public class Database {
     public static final String DRIVER_STRING = "org.apache.derby.jdbc.ClientDriver";
@@ -35,5 +35,31 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public AnimalSpecies selectSpecies(String breed){
+        openConnection();
+
+        AnimalSpecies species = new AnimalSpecies();
+
+        try {
+            PreparedStatement preparedSelect = connection.prepareStatement("select BREED, SPECIES, GENUS from ANIMALSPECIES where BREED=?");
+            preparedSelect.setString(1, breed);
+
+            ResultSet rs = preparedSelect.executeQuery();
+
+            if(rs.next()){
+                species.setBreed(rs.getString(1));
+                species.setSpecies(rs.getString(2));
+                species.setGenus(rs.getString(3));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+
+        return species;
     }
 }
