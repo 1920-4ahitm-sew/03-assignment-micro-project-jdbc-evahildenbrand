@@ -32,9 +32,9 @@ public class AnimalShelterEndpoint {
     }
 
     @DELETE
-    @Path("{id}")
-    public void delete(@PathParam("id") long id){
-        System.out.println("deleted" + id);
+    @Path("{breed}")
+    public void deleteAnimalSpecies(@PathParam("breed") String breed){
+        db.deleteAnimalSpecies(breed);
     }
 
     @POST
