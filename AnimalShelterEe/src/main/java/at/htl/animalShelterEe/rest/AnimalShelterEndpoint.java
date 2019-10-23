@@ -26,6 +26,7 @@ public class AnimalShelterEndpoint {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_XML)
     public List<AnimalSpecies> findAllAnimalSpecies(){
         return db.selectAllAnimalSpecies();
     }
