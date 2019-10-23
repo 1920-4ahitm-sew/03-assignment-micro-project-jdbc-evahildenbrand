@@ -26,10 +26,8 @@ public class AnimalShelterEndpoint {
     }
 
     @GET
-    public List<AnimalSpecies> findAll(){
-        List<AnimalSpecies> all = new ArrayList<>();
-        all.add(find(42));
-        return all;
+    public List<AnimalSpecies> findAllAnimalSpecies(){
+        return db.selectAllAnimalSpecies();
     }
 
     @DELETE
