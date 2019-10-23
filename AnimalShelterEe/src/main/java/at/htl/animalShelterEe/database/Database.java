@@ -24,6 +24,16 @@ public class Database {
         } catch (SQLException e) {
             System.out.println("Could not open Connection to database: \n" + e.getMessage());
         }
+    }
 
+    public static void closeConnection(){
+        try {
+            if(connection != null || connection.isClosed() == false){
+                connection.close();
+                System.out.println("Closed connection to Database!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
