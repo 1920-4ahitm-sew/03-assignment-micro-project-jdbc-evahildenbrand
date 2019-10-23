@@ -3,6 +3,8 @@ package at.htl.animalShelterEe.database;
 import at.htl.animalShelterEe.model.AnimalSpecies;
 
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Database {
     public static final String DRIVER_STRING = "org.apache.derby.jdbc.ClientDriver";
@@ -61,5 +63,35 @@ public class Database {
         closeConnection();
 
         return species;
+    }
+
+    public List<AnimalSpecies> selectAllAnimalSpecies(){
+        List<AnimalSpecies> speciesList = new LinkedList<>();
+
+        openConnection();
+
+        try {
+            PreparedStatement selectAll = connection.prepareStatement("select BREED, SPECIES, GENUS from ANIMALSPECIES");
+
+            ResultSet rs = selectAll.executeQuery();
+            AnimalSpecies species;
+
+            while (rs.next()){
+                species = new AnimalSpecies();
+
+                species.setBreed(rs.getString(1));
+                species.setSpecies(rs.getString(2));
+                species.setGenus(rs.getString(3));
+
+                speciesList.add(species);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+
+        return speciesList;
     }
 }
