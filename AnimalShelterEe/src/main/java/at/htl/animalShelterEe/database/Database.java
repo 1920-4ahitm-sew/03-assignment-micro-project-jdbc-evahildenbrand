@@ -94,4 +94,24 @@ public class Database {
 
         return speciesList;
     }
+
+    public void insertAnimalSpecies(AnimalSpecies species){
+        openConnection();
+
+        try {
+            PreparedStatement insertSpecies = connection.prepareStatement("insert into ANIMALSPECIES (BREED, SPECIES, GENUS) values (?,?,?)");
+
+            insertSpecies.setString(1, species.getBreed());
+            insertSpecies.setString(2, species.getSpecies());
+            insertSpecies.setString(3, species.getGenus());
+
+            insertSpecies.execute();
+
+            System.out.println(species + " inserted in table AnimalSpecies!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        closeConnection();
+    }
 }
