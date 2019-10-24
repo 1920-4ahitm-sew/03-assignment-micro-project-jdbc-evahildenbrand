@@ -42,27 +42,28 @@ public class AnimalShelterIT {
         }
     }
 
-    @Test
-    public void createTest(){
-        try {
-            Statement stmt = connection.createStatement();
-
-            String createSql = "CREATE TABLE test_animalSpecies(" +
-                    "breed varchar(50) constraint breedPk PRIMARY KEY," +
-                    "species varchar(50)," +
-                    "genus varchar(50))";
-
-            stmt.execute(createSql);
-
-            //Drop table, that this test passes more than one time
-            String dropSql = "drop table test_animalSpecies";
-
-            stmt.execute(dropSql);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    //Start Database of AnimalShelterSe-st for this test
+//    @Test
+//    public void createTest(){
+//        try {
+//            Statement stmt = connection.createStatement();
+//
+//            String createSql = "CREATE TABLE test_animalSpecies(" +
+//                    "breed varchar(50) constraint breedPk PRIMARY KEY," +
+//                    "species varchar(50)," +
+//                    "genus varchar(50))";
+//
+//            stmt.execute(createSql);
+//
+//            //Drop table, that this test passes more than one time
+//            String dropSql = "drop table test_animalSpecies";
+//
+//            stmt.execute(dropSql);
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Test
     public void insertTest(){
