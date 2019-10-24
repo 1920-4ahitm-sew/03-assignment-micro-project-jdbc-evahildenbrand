@@ -70,8 +70,13 @@ public class AnimalShelterIT {
             Statement stmt = connection.createStatement();
 
             String insertSql = "insert into ANIMALSPECIES (BREED, SPECIES, GENUS) values ('Feldmaus','Nagetier','Saeugetier')";
-            
+
             stmt.execute(insertSql);
+
+            //Delete insert, so that this test passes more than one time
+            String deleteSql = "delete from ANIMALSPECIES where breed='Feldmaus'";
+
+            stmt.execute(deleteSql);
 
         } catch (SQLException e) {
             e.printStackTrace();
