@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class AnimalShelterIT {
     public static final String DRIVER_STRING = "org.apache.derby.jdbc.ClientDriver";
@@ -41,5 +42,21 @@ public class AnimalShelterIT {
         }
     }
 
+    @Test
+    public void createTest(){
+        try {
+            Statement createStmt = connection.createStatement();
+
+            String sql = "CREATE TABLE test_animalSpecies(" +
+                    "breed varchar(50) constraint breedPk PRIMARY KEY," +
+                    "species varchar(50)," +
+                    "genus varchar(50))";
+
+            createStmt.execute(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
