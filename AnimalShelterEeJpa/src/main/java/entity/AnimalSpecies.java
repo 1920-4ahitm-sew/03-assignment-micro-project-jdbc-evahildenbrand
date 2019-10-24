@@ -16,6 +16,7 @@ public class AnimalSpecies {
     private String species;
     private String genus;
 
+    //region Getter and Setter
     public void setBreed(String breed) {
         this.breed = breed;
     }
@@ -40,6 +41,7 @@ public class AnimalSpecies {
     public void setGenus(String genus) {
         this.genus = genus;
     }
+    //endregion
 
     @Override
     public String toString() {
