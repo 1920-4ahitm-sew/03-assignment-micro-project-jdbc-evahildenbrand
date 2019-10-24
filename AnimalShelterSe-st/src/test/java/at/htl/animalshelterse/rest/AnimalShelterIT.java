@@ -119,4 +119,16 @@ public class AnimalShelterIT {
 
     }
 
+    public void updateTest(){
+        try {
+            Statement stmt = connection.createStatement();
+
+            String updateSql = "update ANIMALSPECIES set SPECIES='UpdateSpecies' where BREED='Testtier'";
+
+            stmt.executeUpdate(updateSql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
