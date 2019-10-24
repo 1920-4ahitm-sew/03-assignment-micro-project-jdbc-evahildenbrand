@@ -16,6 +16,15 @@ public class AnimalSpecies {
     private String species;
     private String genus;
 
+    public AnimalSpecies(String breed, String species, String genus) {
+        this.breed = breed;
+        this.species = species;
+        this.genus = genus;
+    }
+
+    public AnimalSpecies() {
+    }
+
     //region Getter and Setter
     public void setBreed(String breed) {
         this.breed = breed;
