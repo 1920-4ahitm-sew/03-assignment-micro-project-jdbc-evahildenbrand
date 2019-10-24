@@ -64,4 +64,18 @@ public class AnimalShelterIT {
         }
     }
 
+    @Test
+    public void insertTest(){
+        try {
+            Statement stmt = connection.createStatement();
+
+            String insertSql = "insert into ANIMALSPECIES (BREED, SPECIES, GENUS) values ('Feldmaus','Nagetier','Saeugetier')";
+            
+            stmt.execute(insertSql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
