@@ -1,4 +1,4 @@
-package entity;
+package at.htl.animalshelter.entity;
 
 import javax.persistence.*;
 
