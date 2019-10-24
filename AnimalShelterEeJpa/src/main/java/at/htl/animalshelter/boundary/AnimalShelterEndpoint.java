@@ -42,4 +42,17 @@ public class AnimalShelterEndpoint {
         em.persist(species);
         System.out.println(species + " was inserted in DB!");
     }
+
+    @PUT
+    @Path("{breed}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void updateAnimalSpecies(@PathParam("breed") String breed, AnimalSpecies updatedSpecies){
+        AnimalSpecies species = em.find(AnimalSpecies.class,breed);
+
+        species.setSpecies(updatedSpecies.getSpecies());
+        species.setGenus(updatedSpecies.getGenus());
+
+        em.merge(species);
+        System.out.println(species + " was updated in DB!");
+    }
 }
