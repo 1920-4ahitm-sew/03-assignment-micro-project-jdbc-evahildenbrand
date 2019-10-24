@@ -1,5 +1,6 @@
 package at.htl.animalshelterse.rest;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -27,5 +28,18 @@ public class AnimalShelterIT {
             System.exit(1);
         }
     }
+
+    @AfterAll
+    public static void closeConnection(){
+        try {
+            if(connection != null || connection.isClosed() == false){
+                connection.close();
+                System.out.println("Closed connection to Database!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
