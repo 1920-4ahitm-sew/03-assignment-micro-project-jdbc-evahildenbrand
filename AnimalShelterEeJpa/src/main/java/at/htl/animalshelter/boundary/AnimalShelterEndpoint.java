@@ -55,4 +55,12 @@ public class AnimalShelterEndpoint {
         em.merge(species);
         System.out.println(species + " was updated in DB!");
     }
+
+    @DELETE
+    @Path("{breed}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void deleteAnimalSpecies(@PathParam("breed") String breed){
+        em.remove(em.find(AnimalSpecies.class,breed));
+        System.out.println(breed + " was deleted from DB!");
+    }
 }
