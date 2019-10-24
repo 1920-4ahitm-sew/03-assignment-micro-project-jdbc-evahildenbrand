@@ -70,14 +70,14 @@ public class AnimalShelterIT {
         try {
             Statement stmt = connection.createStatement();
 
-            String insertSql = "insert into ANIMALSPECIES (BREED, SPECIES, GENUS) values ('Feldmaus','Nagetier','Saeugetier')";
+            String insertSql = "insert into ANIMALSPECIES (BREED, SPECIES, GENUS) values ('Testtier','Testspecies','Testgattung')";
 
             stmt.execute(insertSql);
 
             //Delete insert, so that this test passes more than one time
-            String deleteSql = "delete from ANIMALSPECIES where breed='Feldmaus'";
-
-            stmt.execute(deleteSql);
+//            String deleteSql = "delete from ANIMALSPECIES where breed='Testtier'";
+//
+//            stmt.execute(deleteSql);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,26 +88,31 @@ public class AnimalShelterIT {
         try {
             Statement stmt = connection.createStatement();
 
-            String selectSql =  "select breed,species,genus from ANIMALSPECIES";
+            String selectSql =  "select breed,species,genus from ANIMALSPECIES where breed='Testtier'";
 
             ResultSet rs = stmt.executeQuery(selectSql);
 
+//            rs.next();
+//            assertThat(rs.getString("breed"),is("Wildkatze"));
+//            assertThat(rs.getString("species"),is("Katze"));
+//            assertThat(rs.getString("genus"),is("Saeugetier"));
+//            rs.next();
+//            assertThat(rs.getString("breed"),is("Siamkatze"));
+//            assertThat(rs.getString("species"),is("Katze"));
+//            assertThat(rs.getString("genus"),is("Saeugetier"));
+//            rs.next();
+//            assertThat(rs.getString("breed"),is("Golden Retriever"));
+//            assertThat(rs.getString("species"),is("Hund"));
+//            assertThat(rs.getString("genus"),is("Saeugetier"));
+//            rs.next();
+//            assertThat(rs.getString("breed"),is("Border Collie"));
+//            assertThat(rs.getString("species"),is("Hund"));
+//            assertThat(rs.getString("genus"),is("Saeugetier"));
+
             rs.next();
-            assertThat(rs.getString("breed"),is("Wildkatze"));
-            assertThat(rs.getString("species"),is("Katze"));
-            assertThat(rs.getString("genus"),is("Saeugetier"));
-            rs.next();
-            assertThat(rs.getString("breed"),is("Siamkatze"));
-            assertThat(rs.getString("species"),is("Katze"));
-            assertThat(rs.getString("genus"),is("Saeugetier"));
-            rs.next();
-            assertThat(rs.getString("breed"),is("Golden Retriever"));
-            assertThat(rs.getString("species"),is("Hund"));
-            assertThat(rs.getString("genus"),is("Saeugetier"));
-            rs.next();
-            assertThat(rs.getString("breed"),is("Border Collie"));
-            assertThat(rs.getString("species"),is("Hund"));
-            assertThat(rs.getString("genus"),is("Saeugetier"));
+            assertThat(rs.getString("breed"),is("Testtier"));
+            assertThat(rs.getString("species"),is("Testspecies"));
+            assertThat(rs.getString("genus"),is("Testgattung"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
