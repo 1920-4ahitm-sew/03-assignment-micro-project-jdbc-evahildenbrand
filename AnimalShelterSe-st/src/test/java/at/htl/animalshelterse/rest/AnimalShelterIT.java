@@ -4,10 +4,10 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class AnimalShelterIT {
     public static final String DRIVER_STRING = "org.apache.derby.jdbc.ClientDriver";
@@ -81,6 +81,36 @@ public class AnimalShelterIT {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void selectTest(){
+        try {
+            Statement stmt = connection.createStatement();
+
+            String selectSql =  "select breed,species,genus from ANIMALSPECIES";
+
+            ResultSet rs = stmt.executeQuery(selectSql);
+
+            rs.next();
+            assertThat(rs.getString("breed"),is("Wildkatze"));
+            assertThat(rs.getString("species"),is("Katze"));
+            assertThat(rs.getString("genus"),is("Saeugetier"));
+            rs.next();
+            assertThat(rs.getString("breed"),is("Siamkatze"));
+            assertThat(rs.getString("species"),is("Katze"));
+            assertThat(rs.getString("genus"),is("Saeugetier"));
+            rs.next();
+            assertThat(rs.getString("breed"),is("Golden Retriever"));
+            assertThat(rs.getString("species"),is("Hund"));
+            assertThat(rs.getString("genus"),is("Saeugetier"));
+            rs.next();
+            assertThat(rs.getString("breed"),is("Border Collie"));
+            assertThat(rs.getString("species"),is("Hund"));
+            assertThat(rs.getString("genus"),is("Saeugetier"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
