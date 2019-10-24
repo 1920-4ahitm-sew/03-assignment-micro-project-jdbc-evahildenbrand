@@ -6,10 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.awt.*;
 import java.util.List;
@@ -37,5 +34,12 @@ public class AnimalShelterEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public List<AnimalSpecies> findAllAnimalSpecies(){
         return em.createNamedQuery("AnimalSpecies.findall",AnimalSpecies.class).getResultList();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void insertAnimalSpecies(AnimalSpecies species){
+        em.persist(species);
+        System.out.println(species + " was inserted in DB!");
     }
 }
