@@ -12,6 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.awt.*;
+import java.util.List;
 
 @Stateless
 @Path("/")
@@ -30,5 +31,11 @@ public class AnimalShelterEndpoint {
     @Path("{breed}")
     public AnimalSpecies findAnimalSpecies(@PathParam("breed") String breed){
         return em.find(AnimalSpecies.class, breed);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<AnimalSpecies> findAllAnimalSpecies(){
+        return em.createNamedQuery("AnimalSpecies.findall",AnimalSpecies.class).getResultList();
     }
 }
