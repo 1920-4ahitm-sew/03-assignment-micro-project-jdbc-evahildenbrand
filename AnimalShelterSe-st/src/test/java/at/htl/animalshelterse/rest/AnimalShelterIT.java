@@ -45,14 +45,19 @@ public class AnimalShelterIT {
     @Test
     public void createTest(){
         try {
-            Statement createStmt = connection.createStatement();
+            Statement stmt = connection.createStatement();
 
-            String sql = "CREATE TABLE test_animalSpecies(" +
+            String createSql = "CREATE TABLE test_animalSpecies(" +
                     "breed varchar(50) constraint breedPk PRIMARY KEY," +
                     "species varchar(50)," +
                     "genus varchar(50))";
 
-            createStmt.execute(sql);
+            stmt.execute(createSql);
+
+            //Drop table, that this test passes more than one time
+            String dropSql = "drop table test_animalSpecies";
+
+            stmt.execute(dropSql);
 
         } catch (SQLException e) {
             e.printStackTrace();
