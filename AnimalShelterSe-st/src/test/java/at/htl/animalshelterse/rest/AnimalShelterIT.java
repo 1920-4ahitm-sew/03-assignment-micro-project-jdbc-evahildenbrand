@@ -84,6 +84,7 @@ public class AnimalShelterIT {
         }
     }
 
+    @Test
     public void selectTest(){
         try {
             Statement stmt = connection.createStatement();
@@ -119,6 +120,7 @@ public class AnimalShelterIT {
 
     }
 
+    @Test
     public void updateTest(){
         try {
             Statement stmt = connection.createStatement();
@@ -126,6 +128,19 @@ public class AnimalShelterIT {
             String updateSql = "update ANIMALSPECIES set SPECIES='UpdateSpecies' where BREED='Testtier'";
 
             stmt.executeUpdate(updateSql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void deleteTest(){
+        try {
+            Statement stmt = connection.createStatement();
+
+            String deleteSql = "delete from ANIMALSPECIES where BREED='Testtier'";
+
+            stmt.execute(deleteSql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
